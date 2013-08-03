@@ -13,9 +13,9 @@ from __future__ import absolute_import
 
 
 from django.contrib import admin
-from winfates.models import Machine, Project, Scenario, Season, Run
+from winfates.models import Machine, Sighting
 
-admin.site.register((Machine, Project, Scenario, Season, Run))
+admin.site.register([Machine, Sighting])
 
 ### Constants
 

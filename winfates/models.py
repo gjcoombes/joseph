@@ -34,41 +34,17 @@ class Machine(models.Model):
     def __unicode__(self):
         return self.name
 
-    def is_apache(self):
-        return self.team.lower() == "apache"
 
-class Project(models.Model):
+class Sighting(models.Model):
+    """ An interval where the winfates message was possessed/transformed/seen
     """
-
-    eg J0236 Apache Ennerdale-1
-    """
-    name = models.CharField(max_length=128)
-    description = models.TextField()
-    client = models.CharField(max_length=128)
-    job_number = models.CharField(max_length=8)
-    project_dir = models.CharField(max_length=128)
-
-class Scenario(models.Model):
-    """
-    """
-    name = models.CharField(max_length=128)
-    description = models.TextField(blank=True)
-    oil = models.CharField(max_length=128)
-    base_in3 = models.TextField()
-
-class Season(models.Model):
-    """
-    """
-    name = models.CharField(max_length=128)
-    description = models.TextField(blank=True)
-    months = models.CharField(max_length=128)
-    days = models.IntegerField()
-
-class Run(models.Model):
-    """
-    """
-    name = models.CharField(max_length=128)
+    machine = models.ForeignKey(Machine)
+    time_recv = models.DateTimeField()
+    time_sent = models.DateTimeField()
+    msg_id = models.CharField(max_length=128)
+    queue = models.CharField(max_length=128)
     stem = models.CharField(max_length=128)
+    exe = models.CharField(max_length=128)
 
 ### Functions
 

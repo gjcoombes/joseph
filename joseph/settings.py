@@ -108,6 +108,7 @@ ROOT_URLCONF = 'joseph.urls'
 WSGI_APPLICATION = 'joseph.wsgi.application'
 
 TEMPLATE_DIRS = (
+    "C:/Users/gav/src/python/joseph/templates",
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
