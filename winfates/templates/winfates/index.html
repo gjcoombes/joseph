@@ -1,0 +1,10 @@
+{% if latest_sighting_list %}
+    <ul>
+    {% for sighting in latest_sighting_list %}
+        <li><a href="/sighting/{{ sighting.id }}/">{{ sighting.machine }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No sightings are available.</p>
+{% endif %}
+
