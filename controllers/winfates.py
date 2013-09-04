@@ -48,6 +48,6 @@ def find():
     return dict(form=form)
 
 def found():
-    if not request.function=='first' and not session.visitor_name:
-        redirect(URL('found'))  
+    if not request.function=='find' and not session.stem:
+        redirect(URL('find'))  
     return dict()
