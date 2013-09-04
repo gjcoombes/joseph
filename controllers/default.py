@@ -18,10 +18,21 @@ def index():
     if you need a simple wiki simple replace the two lines below with:
     return auth.wiki()
     """
-    response.flash = T("Welcome to web2py!")
-    return dict(message=T('Hello World'))
+    if not session.counter:
+        session.counter = 1
+    else:
+        session.counter += 1
+    return {
+        "message": "Joseph says hello again monkeys!",
+        "counter": session.counter
+    }
 
+def first():
+    return dict()
 
+def second():
+    return dict()
+    
 def user():
     """
     exposes:
