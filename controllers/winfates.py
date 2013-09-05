@@ -3,6 +3,9 @@
 """
 
 """
+import bonaparte
+import winfates
+
 
 def index():
     """
@@ -33,7 +36,7 @@ def first():
 
 def second():
     if not request.function=='first' and not session.visitor_name:
-        redirect(URL('first'))	
+        redirect(URL('first'))
     return dict()
 
 def find():
@@ -49,5 +52,44 @@ def find():
 
 def found():
     if not request.function=='find' and not session.stem:
-        redirect(URL('find'))  
+        redirect(URL('find'))
     return dict()
+
+def find():
+    form = SQLFORM.factory(
+        Field('stem',
+            label='which stem?',
+            requires=IS_NOT_EMPTY()),
+        )
+    if form.process().accepted:
+        session.stem= form.vars.stem
+        redirect(URL('found'))
+    return dict(form=form)
+
+def launch():
+    form = SQLFORM.factory(
+        Field('stem',
+            label='which stem?',
+            requires=IS_NOT_EMPTY()),
+        )
+    if form.process().accepted:
+        stem = form.vars.stem
+        winfates.launch.launch_job(stem)
+        session.stem= form.vars.stem
+        redirect(URL('found'))
+    return dict(form=form)
+
+
+
+
+
+if __name__ == "__main__":
+
+    print("Done __main__")
+
+
+
+
+
+
+
