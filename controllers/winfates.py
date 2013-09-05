@@ -66,18 +66,38 @@ def find():
         redirect(URL('found'))
     return dict(form=form)
 
-def launch():
+def launch_my_job():
     form = SQLFORM.factory(
+        Field('q_app',
+            label='which app?',
+            requires=IS_NOT_EMPTY()),
+        Field('core',
+            label='which core machine?',
+            requires=IS_NOT_EMPTY()),
+        Field('sink',
+            label='which sink machine?',
+            requires=IS_NOT_EMPTY()),
+        Field('project',
+            label='which project folder?',
+            requires=IS_NOT_EMPTY()),
         Field('stem',
             label='which stem?',
             requires=IS_NOT_EMPTY()),
+        Field('q_group',
+            label='which queue group?',
+            requires=IS_NOT_EMPTY()),
+
         )
     if form.process().accepted:
-        stem = form.vars.stem
-        winfates.launch.launch_job(stem)
-        session.stem= form.vars.stem
-        redirect(URL('found'))
+#        stem = form.vars.stem
+#        winfates.launch.launch_job(stem)
+        redirect(URL('launched'))
     return dict(form=form)
+
+def launched():
+    if not request.function=='launch_my_job' and not session.stem:
+        redirect(URL('launch_my_job'))
+    return dict()
 
 
 
