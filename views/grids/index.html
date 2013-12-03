@@ -1,0 +1,31 @@
+{{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
+{{extend 'layout.html'}}
+
+{{if 'message' in globals():}}
+<h1>Depth and habitat grids</h1>
+<h2> </h2>
+<h4>You can: </h4>
+<ul>
+  <li>{{=A('search', _href=URL('grids', 'search'))}} for a grid</li>
+  <li>{{=A('show', _href=URL('grids', 'show'))}} a grid</li>
+  <li>{{=A('enter', _href=URL('grids', 'enter'))}} an existing grid or</li>
+  <li>{{=A('build', _href=URL('grids', 'build'))}} a new grid</li>
+</ul>
+{{elif 'content' in globals():}}
+{{=content}}
+{{else:}}
+{{=BEAUTIFY(response._vars)}}
+{{pass}}
+
+{{block right_sidebar}}
+{{=A(T("Administrative Interface"), _href=URL('admin','default','index'), _class='btn',
+     _style='margin-top: 1em;')}}
+<h6>{{=T("Don't know what to do?")}}</h6>
+<ul>
+  <li>{{=A(T("Online examples"), _href=URL('examples','default','index'))}}</li>
+  <li><a href="http://web2py.com">web2py.com</a></li>
+   <li><a href="http://web2py.com/book">{{=T('Documentation')}}</a></li>
+   <li><a href="http://127.0.0.1:8000/joseph/winfates/launch">
+      {{=T('Launch')}}</a></li>
+</ul>
+{{end}}

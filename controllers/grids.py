@@ -18,6 +18,8 @@ def index():
     if you need a simple wiki simple replace the two lines below with:
     return auth.wiki()
     """
+    response.title    = "Depth and habitat grids"
+    response.subtitle = ""
     if not session.counter:
         session.counter = 1
     else:
@@ -27,16 +29,19 @@ def index():
         "counter": session.counter
     }
 
-def simap_grids():
+def find():
     response.flash = "You found me!"
-    return dict(message="Monkey Magic")
-
-def first():
     return dict()
 
-def second():
+def show():
+    return dict()
+
+def enter():
     return dict()
     
+def build():
+    return dict()
+
 def user():
     """
     exposes:

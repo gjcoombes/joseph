@@ -1,0 +1,6 @@
+timestamp: 2013-12-02T15:50:05.854000
+CREATE TABLE person(
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(512)
+);
+success!
