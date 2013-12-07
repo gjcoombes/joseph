@@ -56,6 +56,7 @@ db.post.image_id.writable = db.post.image_id.readable = False
 
 ## configure auth policy
 auth = Auth(db)
+auth.define_tables(username=True)
 auth.settings.registration_requires_verification = False
 auth.settings.registration_requires_approval = False
 auth.settings.reset_password_requires_verification = True

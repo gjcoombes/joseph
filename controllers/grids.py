@@ -30,11 +30,18 @@ def index():
     }
 
 def find():
-    response.flash = "You found me!"
-    return dict()
+    grids = db().select(db.simap_grids.ALL, orderby=db.simap_grids.id)
+    return  {
+        "grids": grids,
+    }
 
 def show():
-    return dict()
+    simap_grid = db.simap_grids(request.args(0, cast=int)) or redirect (URL('find'))
+    web_grid = SQLFORM.smartgrid(db.simap_grids)
+    return {
+        "web_grid": web_grid,
+        "simap_grid ": simap_grid ,
+    }
 
 def enter():
     return dict()
